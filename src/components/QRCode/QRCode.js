@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Modal from 'react-modal';
 import { saveAs } from 'file-saver';
+import PropTypes from 'prop-types';
 
 
 import ShowQRCode from './ShowQRCode';
@@ -9,6 +10,11 @@ import Styles from './QRCode.module.scss';
 
 
 class QRCode extends Component {
+	static propTypes = {
+		data: PropTypes.object,
+		isDownload: PropTypes.bool,
+		addData: PropTypes.func.isRequired,
+	};
 
 	state = {
 		isOpen: false,

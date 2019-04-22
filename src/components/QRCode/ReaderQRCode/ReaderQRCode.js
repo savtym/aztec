@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import QrReader from 'react-qr-scanner';
+import PropTypes from 'prop-types';
 
 import {
 	Button,
@@ -11,6 +12,9 @@ import Styles from './ReaderQRCode.module.scss';
 
 
 class ReaderQRCode extends Component {
+	static propTypes = {
+		addData: PropTypes.func.isRequired,
+	};
 
 	state = {
 		data: {},

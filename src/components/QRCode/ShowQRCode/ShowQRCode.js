@@ -1,5 +1,6 @@
 import React from 'react';
 import QRCodeReact from 'qrcode.react';
+import PropTypes from 'prop-types';
 
 import { Button, TextField } from 'components';
 import { sentenceCase } from 'utils';
@@ -41,6 +42,13 @@ function ShowQRCode(props) {
 		</>
 	);
 }
+
+
+ShowQRCode.propTypes = {
+	data: PropTypes.object,
+	refQRCode: PropTypes.object.isRequired,
+	downloadQRCode: PropTypes.func.isRequired,
+};
 
 
 export default ShowQRCode;
