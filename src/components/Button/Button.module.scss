@@ -19,11 +19,18 @@
 	}
 }
 
-
 .default {
 	background-color: $green;
 
 	&:hover:not(:disabled) {
 		background: #1B5E20;
+	}
+}
+
+.primary {
+	background-color: $blue;
+
+	&:hover:not(:disabled) {
+		background: #01579B;
 	}
 }

@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 import Modal from 'react-modal';
-import QRCodeReact from 'qrcode.react';
 import { saveAs } from 'file-saver';
 
-import { TextField, Button } from 'components';
-import { sentenceCase } from 'utils';
+
+import ShowQRCode from './ShowQRCode';
+import ReaderQRCode from './ReaderQRCode';
 import Styles from './QRCode.module.scss';
 
 
 class QRCode extends Component {
 
 	state = {
-		isOpen: true,
+		isOpen: false,
 	};
 
 	qrCode = React.createRef();
@@ -19,7 +19,7 @@ class QRCode extends Component {
 
 	static getDerivedStateFromProps(props) {
 		return {
-			isOpen: Boolean(props.data),
+			isOpen: Boolean(props.data) || Boolean(props.isDownload),
 		}
 	}
 
@@ -51,7 +51,31 @@ class QRCode extends Component {
 
 	render() {
 		const { isOpen } = this.state;
-		const { data } = this.props;
+		const {
+			data,
+			addData,
+			isDownload,
+		} = this.props;
+
+		let component = (
+			<p>No content</p>
+		);
+
+		if (data) {
+			component = (
+				<ShowQRCode
+					data={data}
+					refQRCode={this.qrCode}
+					downloadQRCode={this.downloadQRCode}
+				/>
+			);
+		}
+
+		if (isDownload) {
+			component = (
+				<ReaderQRCode addData={addData} />
+			);
+		}
 
 		return (
 			<Modal
@@ -67,36 +91,8 @@ class QRCode extends Component {
 
 
 				<div className={Styles.content}>
-					{data ? (
-						<>
-							{Object.keys(data).map(key => (
-								<TextField
-									key={key}
-									disabled
-									value={data[key]}
-									placeholder={sentenceCase(key)}
-								/>
-							))}
-
-							<div className={Styles.QRCode} ref={this.qrCode}>
-								<QRCodeReact
-									size={380}
-									value={JSON.stringify(data)}
-								/>
-
-								<Button
-									className={Styles.downloadBtn}
-									onClick={this.downloadQRCode}
-								>
-									Save QR Code
-								</Button>
-							</div>
-						</>
-					) : (
-						<p>No content</p>
-					)}
+					{component}
 				</div>
-
 			</Modal>
 		);
 	}

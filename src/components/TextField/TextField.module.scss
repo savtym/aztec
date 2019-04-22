@@ -33,3 +33,15 @@
 		border-bottom: 1px solid $blue;
 	}
 }
+
+.disabled {
+	.title {
+		cursor: default;
+
+		&:hover {
+			& + .input {
+				border-bottom-color: $gray;
+			}
+		}
+	}
+}

@@ -3,6 +3,7 @@ import ReactTable from 'react-table';
 
 import {
 	Button,
+	ButtonTypes,
 	QRCode,
 	TextField,
 } from 'components';
@@ -91,10 +92,28 @@ class Tickets extends Component {
 	});
 
 
+	addDataToTable = (data) => {
+		const { tickets } = this.state;
+
+		this.setState({
+			tickets: [...tickets, data],
+			isDownloadQRCode: false,
+		});
+	};
+
+
 	removeClickedTicket = () => {
 		this.setState({
 			clickedTicket: null,
+			isDownloadQRCode: false,
 		});
+	};
+
+
+	onClickDownloadQRCode = () => {
+		this.setState({
+			isDownloadQRCode: true,
+		})
 	};
 
 
@@ -103,6 +122,7 @@ class Tickets extends Component {
 			tickets,
 			addTicket,
 			clickedTicket,
+			isDownloadQRCode,
 		} = this.state;
 
 		const isDisabledAddBtn = !Object.values(addTicket).every(Boolean);
@@ -154,6 +174,14 @@ class Tickets extends Component {
 					</Button>
 				</form>
 
+				<Button
+					type={ButtonTypes.PRIMARY}
+					className={Styles.addButton}
+					onClick={this.onClickDownloadQRCode}
+				>
+					Add ticket from QR Code
+				</Button>
+
 				<ReactTable
 					data={tickets}
 					columns={columns}
@@ -163,7 +191,9 @@ class Tickets extends Component {
 				/>
 
 				<QRCode
+					addData={this.addDataToTable}
 					data={clickedTicket}
+					isDownload={isDownloadQRCode}
 					onCloseModal={this.removeClickedTicket}
 				/>
 			</>

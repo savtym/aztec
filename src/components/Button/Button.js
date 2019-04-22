@@ -7,6 +7,7 @@ import Styles from './Button.module.scss';
 
 export const Types = {
 	DEFAULT: Styles.default,
+	PRIMARY: Styles.primary,
 };
 
 

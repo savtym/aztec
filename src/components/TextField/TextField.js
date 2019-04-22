@@ -15,7 +15,9 @@ function TextField(props) {
 	} = props;
 
 	return (
-		<label className={Styles.textField}>
+		<label className={cx(Styles.textField, {
+			[Styles.disabled]: disabled,
+		})}>
 			<span className={Styles.title}>{placeholder}</span>
 
 			<input
