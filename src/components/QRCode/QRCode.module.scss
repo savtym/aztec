@@ -1,0 +1,42 @@
+@import 'styles/colors';
+
+
+.header {
+	border-bottom: 1px solid $gray;
+}
+
+.content {
+	margin-top: 30px;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	font-size: 16px;
+}
+
+.close {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	border: 0;
+	font-size: 22px;
+	background: 0;
+	opacity: .75;
+	cursor: pointer;
+	transition: opacity 0.3s ease-in-out;
+
+	&:hover {
+		opacity: 1;
+	}
+}
+
+.QRCode {
+	margin-top: 30px;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+
+.downloadBtn {
+	margin-top: 30px;
+	width: 100%;
+}

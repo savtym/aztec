@@ -1,0 +1,26 @@
+@import 'styles/variables';
+@import 'styles/colors';
+
+.header {
+	font-size: 18px;
+	text-align: center;
+	line-height: $header-height;
+	height: $header-height;
+	background: $light-gray;
+}
+
+
+.content {
+	padding: 20px 30px;
+	min-height: calc(100vh - #{$header-height} - #{$footer-height});
+	box-sizing: border-box;
+}
+
+
+.footer {
+	width: 100%;
+	font-size: 15px;
+	font-weight: 400;
+	text-align: center;
+	line-height: $footer-height;
+}

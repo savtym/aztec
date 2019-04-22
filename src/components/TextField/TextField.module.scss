@@ -1,0 +1,35 @@
+@import 'styles/colors';
+
+.textField {
+	margin: 5px 0;
+	display: flex;
+	align-items: center;
+}
+
+.title {
+	display: inline-block;
+	cursor: pointer;
+	color: $black;
+	width: 140px;
+
+	&:hover {
+		& + .input {
+			border-bottom-color: $dark-gray;
+		}
+	}
+}
+
+.input {
+	position: relative;
+	border: 0;
+	padding: 7px 0;
+	width: 240px;
+	border-bottom: 1px solid $gray;
+	transition: all 0.3s ease-in-out;
+
+
+	&:focus {
+		outline: none;
+		border-bottom: 1px solid $blue;
+	}
+}

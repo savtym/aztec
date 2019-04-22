@@ -1,0 +1,17 @@
+@import '~normalize.css';
+@import 'fonts';
+
+body {
+	font: 400 14px roboto;
+}
+
+
+// styles for react-modal
+.ReactModal__Overlay {
+	background: rgba(0, 0, 0, 0.75) !important;
+
+	.ReactModal__Content {
+		width: 600px;
+		margin: 0 auto;
+	}
+}

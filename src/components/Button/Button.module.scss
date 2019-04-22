@@ -1,0 +1,29 @@
+@import 'styles/colors';
+
+
+.btn {
+	color: #fff;
+	padding: 12px 18px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	cursor: pointer;
+	border: 0;
+	border-radius: 3px;
+	transition: all 0.3s ease-in-out;
+
+	&:disabled {
+		opacity: .75;
+		cursor: default;
+	}
+}
+
+
+.default {
+	background-color: $green;
+
+	&:hover:not(:disabled) {
+		background: #1B5E20;
+	}
+}

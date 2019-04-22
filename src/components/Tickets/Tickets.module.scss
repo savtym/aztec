@@ -1,0 +1,19 @@
+@import 'styles/colors';
+
+.addButton {
+	margin: 20px auto 0;
+	display: block;
+	width: 380px;
+}
+
+
+.fields {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+
+
+.table {
+	margin-top: 40px;
+}
