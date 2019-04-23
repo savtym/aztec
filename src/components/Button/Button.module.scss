@@ -34,3 +34,11 @@
 		background: #01579B;
 	}
 }
+
+.warning {
+	background-color: $yellow;
+
+	&:hover:not(:disabled) {
+		background: #FF6F00;
+	}
+}

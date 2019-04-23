@@ -45,13 +45,16 @@ const emptyDataForTicket = {
 	seat: '',
 };
 
+const TICKETS = 'TICKETS';
+const tickets = localStorage.getItem(TICKETS);
+
 
 class Tickets extends Component {
 
 	state = {
-		tickets: data,
 		clickedTicket: null,
 		addTicket: { ...emptyDataForTicket },
+		tickets: tickets ? JSON.parse(tickets) : data,
 	};
 
 
@@ -114,6 +117,13 @@ class Tickets extends Component {
 		this.setState({
 			isDownloadQRCode: true,
 		})
+	};
+
+
+	onClickSaveToLocalStorage = () => {
+		const { tickets } = this.state;
+
+		localStorage.setItem(TICKETS, JSON.stringify(tickets));
 	};
 
 
@@ -180,6 +190,14 @@ class Tickets extends Component {
 					onClick={this.onClickDownloadQRCode}
 				>
 					Add ticket from QR Code
+				</Button>
+
+				<Button
+					type={ButtonTypes.WARNING}
+					className={Styles.addButton}
+					onClick={this.onClickSaveToLocalStorage}
+				>
+					Save to Local Storage
 				</Button>
 
 				<ReactTable
